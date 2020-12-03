@@ -7,6 +7,7 @@ categories: 搞机
     网购了一个洋垃圾 LGv40(v409n)韩版的 没有在大陆发售 cpu版本为高通骁龙845
 此机基于aosp所以存在很多不能用的地方比如ntp服务器是谷歌的也就导致没法自动获取时间这很蛋疼
 加上谷歌真正的全家桶一堆谷歌的app往里手机里塞却不能卸载有点强迫症犯了，最蛋疼的是好几个韩文的应用我看了头都大，基于此我想把手机root玩玩 用比较流行的magisk注入然后pacth本系统的boot.img得到新的patched-boot.img 最后刷入手机获取root权限，话不多说开始。
+<!--more-->
 
 1. 首先，我大意了啊，没有闪.直接用原来的老一套去解锁bootloader，打开LG的developer网站[https://developer.lge.com/resource/mobile/RetrieveBootloader.dev]找到LG设备如何解锁bootloader网站有详细步骤，接着打开supported devices 发现LGV40 是有支持不过不是这个机型，怎么办，官方文档里不支持我这种机型的解锁，不慌我们有备而来。
 2. 既然没有支持的机型![image.png](https://i.loli.net/2020/12/02/cveCQq3oGd7iOYB.png)
