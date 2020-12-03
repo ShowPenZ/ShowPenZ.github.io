@@ -40,7 +40,7 @@ gulp.task('minify-js', function (done) {
     done();
 });
 
-// 压缩 public/images 目录内图片(Version<3)
+//压缩 public/images 目录内图片(Version<3)
 gulp.task('minify-images', function () {
     gulp.src('./public/images/**/*.*')
         .pipe(imagemin({
@@ -52,7 +52,7 @@ gulp.task('minify-images', function () {
         .pipe(gulp.dest('./public/images'));
 });
 
-// 压缩 public/images 目录内图片(Version>3)
+// // 压缩 public/images 目录内图片(Version>3)
 // gulp.task('minify-images', function (done) {
 //     gulp.src('./public/images/**/*.*')
 //         .pipe(imagemin([
