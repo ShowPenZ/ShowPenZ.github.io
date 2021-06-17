@@ -7,20 +7,20 @@ comments: true
 电影鉴赏员
 吉他换弦师
 篮球发球手
-ktv 跑调王
+KTV跑调王
 单车骑行者
 前端程序员
 U3D白嫖党
 CRUD机器人
 
 面向谷歌编程
-Js cv工程师
-代码洁癖患者(针对别人)
+JS CV工程师
+代码洁癖患者(针对别人🐶)
 
 ---
 
 联系邮箱：[pengxiaoz1012@gmail.com](mailto:pengxiaoz1012@gmail.com "给他写信")
 QQ: 1226703023
-Wechat: asd448638447
+Wechat: LK_Hanzo_Hasashi
 
 欢迎在下面评论留言 ⬇️

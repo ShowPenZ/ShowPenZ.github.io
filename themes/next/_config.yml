@@ -813,7 +813,7 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn to get AppID and AppKey.
 leancloud_visitors:
-  enable: true
+  enable: false
   app_id: 1aH94VlNa1fgkKPVkp8D8kkQ-gzGzoHsz
   app_key: LguQx710v9x6wfKbi31p7HQw
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
@@ -826,10 +826,10 @@ leancloud_visitors:
 # Visit https://console.firebase.google.com/u/0/ to get apiKey and projectId.
 # Visit https://firebase.google.com/docs/firestore/ to get more information about firestore.
 firestore:
-  enable: false
+  enable: true
   collection: articles #required, a string collection name to access firestore database
-  apiKey: #required
-  projectId: #required
+  apiKey: AIzaSyAJvtfoZSt4KF2pzKFHtcszdJ8NtGOK3NQ
+  projectId: gitpage-c805e
   bluebird: false #enable this if you want to include bluebird 3.5.1(core version) Promise polyfill
 
 # Show Views / Visitors of the website / page with busuanzi.
@@ -843,7 +843,7 @@ busuanzi_count:
   total_visitors_icon: user
   total_views: true
   total_views_icon: eye
-  post_views: false
+  post_views: true
   post_views_icon: eye
 
 # Tencent analytics ID
@@ -996,7 +996,7 @@ lazyload: false
 
 # Progress bar in the top during page loading.
 # Dependencies: https://github.com/theme-next/theme-next-pace
-pace: true
+pace: false
 # Themes list:
 # pace-theme-big-counter | pace-theme-bounce | pace-theme-barber-shop | pace-theme-center-atom
 # pace-theme-center-circle | pace-theme-center-radar | pace-theme-center-simple | pace-theme-corner-indicator
