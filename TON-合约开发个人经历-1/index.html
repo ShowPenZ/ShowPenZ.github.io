@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="yandex-verification" content="3ac9ae36ddebb425">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"theme-next.org","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="引子：因工作的原因接触Ton链的合约开发，遂埋头进入Ton链的学习，一个猛扎下去才发现水太深了 学习新技术肯定需要官方的文档：  https:&#x2F;&#x2F;docs.ton.org&#x2F;mandarin&#x2F;v3&#x2F;guidelines&#x2F;get-started-with-ton Ton的相关文档 https:&#x2F;&#x2F;stepik.org&#x2F;course&#x2F;176754&#x2F;promo Ton的合约入门视频课程学习上述两个是我主要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TON 合约开发个人经历(1)">
+<meta property="og:url" content="https://theme-next.org/TON-%E5%90%88%E7%BA%A6%E5%BC%80%E5%8F%91%E4%B8%AA%E4%BA%BA%E7%BB%8F%E5%8E%86-1/index.html">
+<meta property="og:site_name" content="NexT">
+<meta property="og:description" content="引子：因工作的原因接触Ton链的合约开发，遂埋头进入Ton链的学习，一个猛扎下去才发现水太深了 学习新技术肯定需要官方的文档：  https:&#x2F;&#x2F;docs.ton.org&#x2F;mandarin&#x2F;v3&#x2F;guidelines&#x2F;get-started-with-ton Ton的相关文档 https:&#x2F;&#x2F;stepik.org&#x2F;course&#x2F;176754&#x2F;promo Ton的合约入门视频课程学习上述两个是我主要">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-06T17:41:58.000Z">
+<meta property="article:modified_time" content="2025-04-07T09:30:10.820Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Ton Func">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://theme-next.org/TON-%E5%90%88%E7%BA%A6%E5%BC%80%E5%8F%91%E4%B8%AA%E4%BA%BA%E7%BB%8F%E5%8E%86-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>TON 合约开发个人经历(1) | NexT</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="NexT" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">NexT</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Theme for Hexo</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bullhorn fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">36</span></a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvaGV4by10aGVtZS1uZXh0" title="Fork NexT on GitHub" aria-label="Fork NexT on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://theme-next.org/TON-%E5%90%88%E7%BA%A6%E5%BC%80%E5%8F%91%E4%B8%AA%E4%BA%BA%E7%BB%8F%E5%8E%86-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+      <meta itemprop="name" content="Theme NexT">
+      <meta itemprop="description" content="Stay Simple. Stay NexT.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NexT">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TON 合约开发个人经历(1)<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvdGhlbWUtbmV4dC5vcmcvZWRpdC9zb3VyY2Uvc291cmNlL19wb3N0cy9UT04t5ZCI57qm5byA5Y+R5Liq5Lq657uP5Y6GLTEubWQ=" title="Edit this post"><i class="fa fa-pencil-alt"></i></span>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-04-06 17:41:58" itemprop="dateCreated datePublished" datetime="2025-04-06T17:41:58Z">2025-04-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ton-%E5%90%88%E7%BA%A6%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">Ton 合约开发</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/TON-%E5%90%88%E7%BA%A6%E5%BC%80%E5%8F%91%E4%B8%AA%E4%BA%BA%E7%BB%8F%E5%8E%86-1/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="TON-合约开发个人经历-1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>引子：因工作的原因接触Ton链的合约开发，遂埋头进入Ton链的学习，一个猛扎下去才发现水太深了</p>
+<p>学习新技术肯定需要官方的文档：</p>
+<ol>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRvbi5vcmcvbWFuZGFyaW4vdjMvZ3VpZGVsaW5lcy9nZXQtc3RhcnRlZC13aXRoLXRvbg==">https://docs.ton.org/mandarin/v3/guidelines/get-started-with-ton<i class="fa fa-external-link-alt"></i></span> Ton的相关文档</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zdGVwaWsub3JnL2NvdXJzZS8xNzY3NTQvcHJvbW8=">https://stepik.org/course/176754/promo<i class="fa fa-external-link-alt"></i></span> Ton的合约入门视频课程学习<br>上述两个是我主要学习使用的文档</li>
+</ol>
+<p>接下来我阐述的是，我视角中如何理解和学习的过程：<br>首先，我具有evm链的合约开发经验和基础知识，那在TON链上很多东西完全不同可以说是一切都是新的，所以即使你没有接触过evm也没有关系。</p>
+<a id="more"></a>
+
+<p><strong>TON 像一个万维网，每个账户是独立计算机，只能通过消息通信。</strong><br><strong>EVM 像一台超级计算机，每个账户是一个运行中的程序，可以直接访问共享资源。</strong><br>这是我简单理解的对比概念</p>
+<p>TON 账户里的余额会因为“存储费用”而逐渐减少，而这种费用可以类比为“租赁一台永远在线的计算机”的费用。(非常牛逼的设定)</p>
+<p>当账户变成 <strong>inactive</strong> 状态时，账户的所有状态（合约代码、数据存储等）<strong>都会被删除</strong>，只保留一个“空壳”地址</p>
+<p>TON架构 三层架构 使用共识机制采用pos(proof-of-stake)共识算法即验证者必须交纳保证金来确保行为合法。</p>
+<ul>
+<li><strong>主链(Masterchain)</strong>：管理整个网络的“主链”，记录所有工作链和分片链的元数据、全局状态快照。</li>
+<li><strong>工作链(Workchain)</strong>：工作链，是运行在 Masterchain 之下的“子链”，可并行存在多个，每条链可以有不同智能合约语言或规则。</li>
+<li><strong>分片链(Shardchain0)：</strong>是 Workchain 动态分裂出来的多条“子链”，真正处理大量用户交易和账户状态</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">|  Masterchain  |</span><br><span class="line">| (全局元数据)   |</span><br><span class="line">+<span class="comment">----------------+</span></span><br><span class="line">         |</span><br><span class="line">         v</span><br><span class="line">+<span class="comment">----------------+         +----------------+</span></span><br><span class="line">|  Workchain #<span class="number">0</span> |   ...   |  Workchain #N  |</span><br><span class="line">| (主工作链)     |         | (可定制规则)   |</span><br><span class="line">+<span class="comment">----------------+         +----------------+</span></span><br><span class="line">      |   |                          |</span><br><span class="line">      v   v                          v</span><br><span class="line">+<span class="comment">-----------+  +-----------+   +-----------+</span></span><br><span class="line">|Shardchain0|  |Shardchain1|   |Shardchain0|</span><br><span class="line">+<span class="comment">-----------+  +-----------+   +-----------+</span></span><br><span class="line">      |              |                |</span><br><span class="line">      +<span class="comment">------...-----+-------...------+</span></span><br><span class="line">         （分片链动态增加或合并）</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="EVM-与-TON-多签合约的异同点"><a href="#EVM-与-TON-多签合约的异同点" class="headerlink" title="EVM 与 TON 多签合约的异同点"></a>EVM 与 TON 多签合约的异同点</h3><h4 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h4><ol>
+<li>多签基本概念一致<ul>
+<li>EVM 和 TON 上的多签合约都旨在实现多个签名者共同授权交易，以提升安全性。</li>
+<li>都需要定义参与者（签名者）、签名阈值（例如 m/n，m 个签名者同意才能执行）以及交易执行逻辑。</li>
+</ul>
+</li>
+<li>去中心化执行<ul>
+<li>两者都运行在区块链上，多签合约逻辑由智能合约在去中心化环境中执行，保证透明性和不可篡改性。</li>
+</ul>
+</li>
+<li>支持复杂逻辑<ul>
+<li>EVM 和 TON 都支持编写带有条件逻辑的多签合约，例如时间锁、权限管理等功能。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h4><table>
+<thead>
+<tr>
+<th><strong>方面</strong></th>
+<th><strong>EVM</strong></th>
+<th><strong>TON</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>编程语言</strong></td>
+<td>主要使用 Solidity 或 Vyper，语法类似传统编程语言（如 C++、JavaScript）。</td>
+<td>使用 FunC（类似 C）或 Fift，语法更底层且专注于 TON 的异步特性。</td>
+</tr>
+<tr>
+<td><strong>合约模型</strong></td>
+<td>基于账户模型，合约是一个状态机，状态存储在区块链上。</td>
+<td>基于 Actor 模型，合约是独立的“单元”（cell），异步消息驱动。</td>
+</tr>
+<tr>
+<td><strong>交易费用</strong></td>
+<td>Gas 费用统一计算，基于操作复杂度，需预估 Gas Limit。</td>
+<td>费用分为存储费、计算费和消息传递费，需显式管理存储和资源。</td>
+</tr>
+<tr>
+<td><strong>状态管理</strong></td>
+<td>状态存储在链上，合约可以直接修改全局状态，适合同步操作。</td>
+<td>状态分片存储，合约通过消息通信，适合异步和分片设计。</td>
+</tr>
+<tr>
+<td><strong>签名验证方式</strong></td>
+<td>使用以太坊的 ECDSA 签名算法，验证逻辑需在合约中手动实现。</td>
+<td>TON 使用 Ed25519 签名算法，内置支持更高效的签名验证。</td>
+</tr>
+<tr>
+<td><strong>执行效率</strong></td>
+<td>单线程执行，依赖链的吞吐量（受限于以太坊或 L2 的 TPS）。</td>
+<td>并行执行，得益于分片和工作链设计，理论上吞吐量更高。</td>
+</tr>
+<tr>
+<td><strong>开发复杂性</strong></td>
+<td>Solidity 生态成熟，工具丰富（如 Remix、Hardhat），但 Gas 优化较复杂。</td>
+<td>FunC 学习曲线陡峭，生态较新，工具链（如 Blueprint）仍在发展中。</td>
+</tr>
+<tr>
+<td><strong>扩展性</strong></td>
+<td>扩展性依赖 Layer 2 或侧链，单链性能有限。</td>
+<td>原生支持分片，扩展性内置于架构中，适合大规模多签场景。</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li><strong>EVM</strong> 适合熟悉传统区块链开发的开发者，其生态成熟，但受限于 Gas 成本和单链性能，编写多签合约时需关注 Gas 优化和同步逻辑。</li>
+<li><strong>TON</strong> 强调异步处理和高吞吐量，适合需要高效并行处理的多签场景，但开发门槛较高，需适应其独特的分片和消息机制。</li>
+</ul>
+<p>下一节将会开始TON的Func语言的初步合约开发</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Ton-Func/" rel="tag"># Ton Func</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E8%A7%A3%E8%80%A6%E7%9A%84%E7%AE%80%E5%8D%95%E4%BA%8B%E4%BE%8B-vue3/" rel="prev" title="依赖倒置解耦的简单事例(vue3)">
+      <i class="fa fa-chevron-left"></i> 依赖倒置解耦的简单事例(vue3)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/TON-%E5%90%88%E7%BA%A6%E5%BC%80%E5%8F%91%E4%B8%AA%E4%BA%BA%E7%BB%8F%E5%8E%86-2/" rel="next" title="TON 合约开发个人经历(2)">
+      TON 合约开发个人经历(2) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#EVM-与-TON-多签合约的异同点"><span class="nav-number">1.</span> <span class="nav-text">EVM 与 TON 多签合约的异同点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相同点"><span class="nav-number">1.1.</span> <span class="nav-text">相同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同点"><span class="nav-number">1.2.</span> <span class="nav-text">不同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Theme NexT"
+      src="/images/apple-touch-icon-next.png">
+  <p class="site-author-name" itemprop="name">Theme NexT</p>
+  <div class="site-description" itemprop="description">Stay Simple. Stay NexT.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQ=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;theme-next"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:support@theme-next.org" title="E-Mail → mailto:support@theme-next.org"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXR0ZXIuaW0vdGhlbWUtbmV4dA==" title="Gitter → https:&#x2F;&#x2F;gitter.im&#x2F;theme-next"><i class="fab fa-github-alt fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9yaW90LmltL2FwcC8jL3Jvb20vI05leFQ6bWF0cml4Lm9yZw==" title="Riot → https:&#x2F;&#x2F;riot.im&#x2F;app&#x2F;#&#x2F;room&#x2F;#NexT:matrix.org"><i class="fa fa-comment-dots fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90Lm1lL3RoZW1lX25leHQ=" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;theme_next"><i class="fab fa-telegram fa-fw"></i></span>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+<div class="cc-license motion-element" itemprop="sponsor">
+  <span class="exturl cc-opacity" title="Deploy with Netlify → https://www.netlify.com" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20="><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></span>
+</div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2014 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NexT</span>
+</div><div class="footer-custom">
+Theme source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvaGV4by10aGVtZS1uZXh0">here</span><br>
+Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvdGhlbWUtbmV4dC5vcmc=">here</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://theme-next.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://theme-next.org/TON-%E5%90%88%E7%BA%A6%E5%BC%80%E5%8F%91%E4%B8%AA%E4%BA%BA%E7%BB%8F%E5%8E%86-1/";
+    this.page.identifier = "TON-合约开发个人经历-1/";
+    this.page.title = "TON 合约开发个人经历(1)";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://theme-next.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>
