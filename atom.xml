@@ -221,13 +221,13 @@
     <link href="http://yoursite.com/H5-%E5%A4%9A%E4%B8%AA%E5%9D%97%E5%85%83%E7%B4%A0%E6%A8%AA%E5%90%91%E6%BB%9A%E5%8A%A8%E9%97%AE%E9%A2%98/"/>
     <id>http://yoursite.com/H5-%E5%A4%9A%E4%B8%AA%E5%9D%97%E5%85%83%E7%B4%A0%E6%A8%AA%E5%90%91%E6%BB%9A%E5%8A%A8%E9%97%AE%E9%A2%98/</id>
     <published>2020-08-05T03:31:41.000Z</published>
-    <updated>2025-04-07T09:30:10.819Z</updated>
+    <updated>2025-04-07T10:31:36.008Z</updated>
     
-    <content type="html"><![CDATA[<p>工作中遇到的H5 需要4个块级元素在一个窗口内横向滚动 如图<img data-src="https://i.loli.net/2020/08/05/vytDzeV9nTL1Apx.png" alt="image.png"><br>刚开始直接使用css代码对窗口元素书写<code>width: 690px;overflow-x: scroll;</code>之后对其中的每个块级元素进行书写，因为块级元素内需要使用flex布局所以写了<code>display:flex</code>，写完调试发现并没有与想象中的横向滑动符合几个块级元素纵向的排列没有在一行内，如图<img data-src="https://i.loli.net/2020/08/05/tG2Hz5LC1TqUAIE.png" alt="image.png">。<a id="more"></a><br>这时想到了使用<code>white-space: nowrap;</code>来使窗口内的元素不换行。但是块级元素内我还想要flex布局，这会导致换行不起作用，这是可以使用<code>display: inline-flex<code>将其变为行内元素进行滚动</p>]]></content>
+    <content type="html"><![CDATA[<p>工作中遇到的H5 需要4个块级元素在一个窗口内横向滚动 如图<img data-src="https://i.loli.net/2020/08/05/vytDzeV9nTL1Apx.png" alt="image.png"><br>刚开始直接使用css代码对窗口元素书写<code>width: 690px;overflow-x: scroll;</code>之后对其中的每个块级元素进行书写，因为块级元素内需要使用flex布局所以写了<code>display:flex</code>，写完调试发现并没有与想象中的横向滑动符合几个块级元素纵向的排列没有在一行内，如图<img data-src="https://i.loli.net/2020/08/05/tG2Hz5LC1TqUAIE.png" alt="image.png"><a id="more"></a><br>这时想到了使用<code>white-space: nowrap;</code>来使窗口内的元素不换行。但是块级元素内我还想要flex布局，这会导致换行不起作用，这是可以使用<code>display: inline-flex</code>将其变为行内元素进行滚动</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;工作中遇到的H5 需要4个块级元素在一个窗口内横向滚动 如图&lt;img data-src=&quot;https://i.loli.net/2020/08/05/vytDzeV9nTL1Apx.png&quot; alt=&quot;image.png&quot;&gt;&lt;br&gt;刚开始直接使用css代码对窗口元素书写&lt;code&gt;width: 690px;overflow-x: scroll;&lt;/code&gt;之后对其中的每个块级元素进行书写，因为块级元素内需要使用flex布局所以写了&lt;code&gt;display:flex&lt;/code&gt;，写完调试发现并没有与想象中的横向滑动符合几个块级元素纵向的排列没有在一行内，如图&lt;img data-src=&quot;https://i.loli.net/2020/08/05/tG2Hz5LC1TqUAIE.png&quot; alt=&quot;image.png&quot;&gt;。
+      &lt;p&gt;工作中遇到的H5 需要4个块级元素在一个窗口内横向滚动 如图&lt;img data-src=&quot;https://i.loli.net/2020/08/05/vytDzeV9nTL1Apx.png&quot; alt=&quot;image.png&quot;&gt;&lt;br&gt;刚开始直接使用css代码对窗口元素书写&lt;code&gt;width: 690px;overflow-x: scroll;&lt;/code&gt;之后对其中的每个块级元素进行书写，因为块级元素内需要使用flex布局所以写了&lt;code&gt;display:flex&lt;/code&gt;，写完调试发现并没有与想象中的横向滑动符合几个块级元素纵向的排列没有在一行内，如图&lt;img data-src=&quot;https://i.loli.net/2020/08/05/tG2Hz5LC1TqUAIE.png&quot; alt=&quot;image.png&quot;&gt;
     
     </summary>
     
