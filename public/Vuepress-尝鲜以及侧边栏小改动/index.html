@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="yandex-verification" content="3ac9ae36ddebb425">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"theme-next.org","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="今天试了下 VuePress 这个静态网页生成工具制作了一个面试题集(会陆续增加功能，以及习题的增加)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vuepress 尝鲜以及侧边栏小改动">
+<meta property="og:url" content="https://theme-next.org/Vuepress-%E5%B0%9D%E9%B2%9C%E4%BB%A5%E5%8F%8A%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%B0%8F%E6%94%B9%E5%8A%A8/index.html">
+<meta property="og:site_name" content="NexT">
+<meta property="og:description" content="今天试了下 VuePress 这个静态网页生成工具制作了一个面试题集(会陆续增加功能，以及习题的增加)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2020/04/18/ZsvwVYWeJXAa8Mk.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/19/NaFK53mMQjgHqRw.png">
+<meta property="article:published_time" content="2020-04-18T23:56:31.000Z">
+<meta property="article:modified_time" content="2025-04-07T09:30:10.821Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Vuepress">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/04/18/ZsvwVYWeJXAa8Mk.png">
+
+<link rel="canonical" href="https://theme-next.org/Vuepress-%E5%B0%9D%E9%B2%9C%E4%BB%A5%E5%8F%8A%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%B0%8F%E6%94%B9%E5%8A%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Vuepress 尝鲜以及侧边栏小改动 | NexT</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="NexT" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">NexT</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Theme for Hexo</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bullhorn fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">36</span></a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-docs">
+
+    <a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a>
+
+  </li>
+
+
+      
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvaGV4by10aGVtZS1uZXh0" title="Fork NexT on GitHub" aria-label="Fork NexT on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://theme-next.org/Vuepress-%E5%B0%9D%E9%B2%9C%E4%BB%A5%E5%8F%8A%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%B0%8F%E6%94%B9%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+      <meta itemprop="name" content="Theme NexT">
+      <meta itemprop="description" content="Stay Simple. Stay NexT.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NexT">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vuepress 尝鲜以及侧边栏小改动<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvdGhlbWUtbmV4dC5vcmcvZWRpdC9zb3VyY2Uvc291cmNlL19wb3N0cy9WdWVwcmVzcy3lsJ3pspzku6Xlj4rkvqfovrnmoI/lsI/mlLnliqgubWQ=" title="Edit this post"><i class="fa fa-pencil-alt"></i></span>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-04-18 23:56:31" itemprop="dateCreated datePublished" datetime="2020-04-18T23:56:31Z">2020-04-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">静态博客</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/Vuepress-%E5%B0%9D%E9%B2%9C%E4%BB%A5%E5%8F%8A%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%B0%8F%E6%94%B9%E5%8A%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Vuepress-尝鲜以及侧边栏小改动/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>今天试了下 VuePress 这个静态网页生成工具<br>制作了一个面试题集(会陆续增加功能，以及习题的增加)<br><img data-src="https://i.loli.net/2020/04/18/ZsvwVYWeJXAa8Mk.png" alt="image.png"></p>
+<a id="more"></a>
+<h3 id="package-json-文件"><a href="#package-json-文件" class="headerlink" title="package.json 文件"></a>package.json 文件</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"interviewExercise"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">"doc for interviewExercise"</span>,</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="attr">"directories"</span>: &#123;</span><br><span class="line">    <span class="attr">"doc"</span>: <span class="string">"docs"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"dev"</span>: <span class="string">"vuepress dev docs"</span>,</span><br><span class="line">    <span class="attr">"deploy"</span>: <span class="string">"bash deploy.sh"</span>,</span><br><span class="line">    <span class="attr">"push"</span>: <span class="string">"bash push.sh"</span>,</span><br><span class="line">    <span class="attr">"docs:build"</span>: <span class="string">"vuepress build docs"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"repository"</span>: &#123;</span><br><span class="line">    <span class="attr">"type"</span>: <span class="string">"git"</span>,</span><br><span class="line">    <span class="attr">"url"</span>: <span class="string">"git@github.com:ShowPenZ/interviewExercise.git"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</span><br><span class="line">  <span class="attr">"bugs"</span>: &#123;</span><br><span class="line">    <span class="attr">"url"</span>: <span class="string">"https://github.com/ShowPenZ/interviewExercise/issues"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"vuepress"</span>: <span class="string">"^1.0.0-alpha.44"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"gh-pages"</span>: <span class="string">"^2.0.1"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>第一步 构造文件目录</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在项目根目录创建一个 docs 目录</span></span><br><span class="line">mkdir docs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在项目根目录创建一个 javascript 目录</span></span><br><span class="line"><span class="built_in">cd</span> docs</span><br><span class="line"></span><br><span class="line">mkdir javascript</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个 markdown 文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'# Hello VuePress'</span> &gt; docs/README.md</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开始编写文档</span></span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<p>再在 docs 目录下创建一个.vuepress 文件夹<br>以及在.vuepress 文件夹下添加 config.js 配置</p>
+<p>文件目录结构如下<br><img data-src="https://i.loli.net/2020/04/19/NaFK53mMQjgHqRw.png" alt="image.png"></p>
+<p>config.js 简单配置如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">// 第一种</span></span><br><span class="line">  <span class="comment">// 因为我是发布到 https://showpenz.github.io/InterviewExercise</span></span><br><span class="line">  <span class="comment">// 所以将 .vuepress/config.js 中的 base 设置为你的仓库名称。</span></span><br><span class="line">  <span class="comment">// 例如，如果你的仓库是 https://github.com/showpenz/InterviewExercise ，</span></span><br><span class="line">  <span class="comment">// 则已部署的页面将在 https://showpenz.github.io/InterviewExercise 上可用。</span></span><br><span class="line">  <span class="comment">// 在这种情况下，你应该将base设置为 "/InterviewExercise/" 。</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 第二种</span></span><br><span class="line">  <span class="comment">// 如果发布到 https://showpenz.github.io</span></span><br><span class="line">  <span class="comment">// 例如，如果你的仓库是 https://github.com/showpenz/ ，</span></span><br><span class="line">  <span class="comment">// 则已部署的页面将在 https://showpenz.github.io/ 上可用。</span></span><br><span class="line">  <span class="comment">// 在这种情况下，你应该将base设置为 "/" 。</span></span><br><span class="line"></span><br><span class="line">  base: <span class="string">"/interviewExercise"</span>,</span><br><span class="line">  dest: <span class="string">"dist"</span>,</span><br><span class="line"></span><br><span class="line">  description: <span class="string">"面试题"</span>,</span><br><span class="line">  locales: &#123;</span><br><span class="line">    <span class="comment">// 键名是该语言所属的子路径</span></span><br><span class="line">    <span class="comment">// 作为特例，默认语言可以使用 '/' 作为其路径。</span></span><br><span class="line">    <span class="string">"/"</span>: &#123;</span><br><span class="line">      lang: <span class="string">"en-US"</span>, <span class="comment">// 将会被设置为 &lt;html&gt; 的 lang 属性</span></span><br><span class="line">      title: <span class="string">"InterviewExercise"</span>,</span><br><span class="line">      description: <span class="string">"Vue-powered Static Site Generator"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"/zh/"</span>: &#123;</span><br><span class="line">      lang: <span class="string">"zh-CN"</span>,</span><br><span class="line">      title: <span class="string">"练习题"</span>,</span><br><span class="line">      description: <span class="string">"Vue 驱动的静态网站生成器"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  themeConfig: &#123;</span><br><span class="line">    editLinks: <span class="literal">false</span>,</span><br><span class="line">    docsDir: <span class="string">"docs"</span>,</span><br><span class="line">    nav: [],</span><br><span class="line">    locales: &#123;</span><br><span class="line">      <span class="string">"/"</span>: &#123;</span><br><span class="line">        selectText: <span class="string">"选择语言"</span>,</span><br><span class="line">        label: <span class="string">"English"</span>,</span><br><span class="line">        ariaLabel: <span class="string">"Languages"</span>,</span><br><span class="line">        editLinkText: <span class="string">"Edit this page on GitHub"</span>,</span><br><span class="line">        <span class="comment">// nav: [&#123; text: "Nested", link: "/nested/", ariaLabel: "Nested" &#125;],</span></span><br><span class="line">        sidebar: &#123;</span><br><span class="line">          <span class="string">"/"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              title: <span class="string">"Javascript"</span>, <span class="comment">//侧边栏主标题</span></span><br><span class="line">              children: [</span><br><span class="line">                &#123;</span><br><span class="line">                  title: <span class="string">"DataStructureTransformation"</span>, <span class="comment">// 侧边栏二级标题</span></span><br><span class="line">                  children: [</span><br><span class="line">                    [<span class="string">"javascript/DataStructureTransformation/1"</span>, <span class="string">"question 1"</span>], <span class="comment">// 数组第0项是需要显示的md文件的文件夹的文件路径  第1项是侧边栏的三级标题</span></span><br><span class="line">                  ],</span><br><span class="line">                &#125;,</span><br><span class="line">              ],</span><br><span class="line">            &#125;,</span><br><span class="line">          ],</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"/zh/"</span>: &#123;</span><br><span class="line">        <span class="comment">// 多语言下拉菜单的标题</span></span><br><span class="line">        selectText: <span class="string">"Languages"</span>,</span><br><span class="line">        <span class="comment">// 该语言在下拉菜单中的标签</span></span><br><span class="line">        label: <span class="string">"简体中文"</span>,</span><br><span class="line">        <span class="comment">// 编辑链接文字</span></span><br><span class="line">        editLinkText: <span class="string">"在 GitHub 上编辑此页"</span>,</span><br><span class="line">        <span class="comment">// Service Worker 的配置</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当前 locale 的 algolia docsearch 选项</span></span><br><span class="line">        <span class="comment">// nav: [&#123; text: "嵌套", link: "/zh/nested/" &#125;],</span></span><br><span class="line">        sidebar: &#123;</span><br><span class="line">          <span class="string">"/zh/"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">              title: <span class="string">"Javascript"</span>,</span><br><span class="line">              children: [</span><br><span class="line">                &#123;</span><br><span class="line">                  title: <span class="string">"数据结构转换"</span>,</span><br><span class="line">                  children: [</span><br><span class="line">                    [<span class="string">"/zh/javascript/DataStructureTransformation/1"</span>, <span class="string">"第1题"</span>],</span><br><span class="line">                  ],</span><br><span class="line">                &#125;,</span><br><span class="line">              ],</span><br><span class="line">            &#125;,</span><br><span class="line">          ],</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>书写完毕配配置部署到 github 的 git-page</li>
+</ol>
+<p><font color='red'>默认提前在 github 开好新的项目，打开 gitpage 并与当前项目建立好关系</font></p>
+<p>首先在根目录编写 deploy.bash(windows 系统需进行一些处理)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 确保脚本抛出遇到的错误</span></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成静态文件</span></span><br><span class="line">npm run docs:build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入生成的文件夹</span></span><br><span class="line"><span class="built_in">cd</span> docs/.vuepress/dist</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果是发布到自定义域名</span></span><br><span class="line"></span><br><span class="line">git init</span><br><span class="line">git add -A</span><br><span class="line">git commit -m <span class="string">'deploy'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果发布到 https://&lt;USERNAME&gt;.github.io</span></span><br><span class="line"><span class="comment"># git push -f git@github.com:showpenz/showpenz.github.io.git master</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果发布到 https://&lt;USERNAME&gt;.github.io/&lt;REPO&gt;</span></span><br><span class="line"><span class="comment"># 把下面的地址换成你的</span></span><br><span class="line"><span class="comment"># git push -f git@github.com:showpenz/interviewExercise.git master:gh-pages</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> -</span><br></pre></td></tr></table></figure>
+
+<p>然后在根目录执行 npm run deploy.bash 便会自动 build 好并打包在.vuepress 下生成 dist 文件夹，然后自动 push 到 git-pages 分支</p>
+<ol start="3">
+<li>因为我不是全局安装 vuepress 工具 所以好多文件没有自动配置以及生成这里介绍一个我遇到的问题</li>
+</ol>
+<p>根据上面那种简单配置的 config.js 往下走 会导致你新增一个 md 文件就要手动去 config.js 里面增加 sidebar 因为我做的是三级的侧边栏所以好像自动生成侧边栏的功能没法用，我想以后不论增加文件夹还是文件都能自动关联到侧边栏，所以，没关系咱们手写一个。。。</p>
+<p>首先啥也别说 先建一个工具类的文件夹 utils,新增 fileHelper.js</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fileHelper = &#123;</span><br><span class="line">  getFileName: <span class="function"><span class="keyword">function</span> (<span class="params">rootPath, filePath</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> fileTypes = <span class="regexp">/\.md$/</span>; <span class="comment">//只匹配以md结尾的文件</span></span><br><span class="line">    <span class="keyword">let</span> fileNames = [];</span><br><span class="line"></span><br><span class="line">    fs.readdirSync(rootPath + filePath).forEach(<span class="function">(<span class="params">file</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> tempFilePath = <span class="string">""</span>;</span><br><span class="line">      <span class="keyword">let</span> generateArr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"></span><br><span class="line">      fullPath = rootPath + filePath + <span class="string">"/"</span> + file;</span><br><span class="line">      <span class="comment">//异步获取文件状态</span></span><br><span class="line">      <span class="keyword">let</span> fileInfo = fs.statSync(fullPath);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (fileInfo.isFile() &amp;&amp; fileTypes.test(file) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//剔除README.md</span></span><br><span class="line">        <span class="keyword">if</span> (file !== <span class="string">"README.md"</span>) &#123;</span><br><span class="line">          file = file.replace(<span class="string">".md"</span>, <span class="string">""</span>);</span><br><span class="line">          tempFilePath = filePath + <span class="string">"/"</span> + file;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        generateArr.push(tempFilePath, file);</span><br><span class="line">        fileNames.push(generateArr); <span class="comment">// 构造二维数组</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    fileNames.sort(); <span class="comment">// 排序</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fileNames;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = fileHelper;</span><br></pre></td></tr></table></figure>
+
+<p>再在 utils 下新增一个 help.js</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fileHelper = <span class="built_in">require</span>(<span class="string">"./fileHelper"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isString = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line"><span class="keyword">const</span> isArray = <span class="function">(<span class="params">arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> isString.call(arr) === <span class="string">"[object Array]"</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isObject = <span class="function">(<span class="params">arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> isString.call(arr) === <span class="string">"[object Object]"</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> helper = &#123;</span><br><span class="line">  genSidebar: <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    title,</span></span></span><br><span class="line"><span class="function"><span class="params">    children = [],</span></span></span><br><span class="line"><span class="function"><span class="params">    collapsable = true,</span></span></span><br><span class="line"><span class="function"><span class="params">    sidebarDepth = <span class="number">1</span></span></span></span><br><span class="line"><span class="function"><span class="params">  </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">    <span class="keyword">let</span> genData = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (children &amp;&amp; isArray(children[<span class="number">0</span>]) &amp;&amp; isObject(children[<span class="number">0</span>][<span class="number">0</span>])) &#123;</span><br><span class="line">      <span class="keyword">let</span> tempArr = [];</span><br><span class="line"></span><br><span class="line">      children.map(<span class="function">(<span class="params">d</span>) =&gt;</span> &#123;</span><br><span class="line">        tempArr.push(d[<span class="number">0</span>]);</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      genData = tempArr;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      genData = children;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    arr.push(&#123;</span><br><span class="line">      title,</span><br><span class="line">      children: genData,</span><br><span class="line">      collapsable,</span><br><span class="line">      sidebarDepth,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">  &#125;,</span><br><span class="line">  generateArr: <span class="function"><span class="keyword">function</span> (<span class="params">arr, rootpath</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">let</span> tempArr = [];</span><br><span class="line"></span><br><span class="line">    arr.map(<span class="function">(<span class="params">d, i</span>) =&gt;</span> &#123;</span><br><span class="line">      tempArr.push(</span><br><span class="line">        that.genSidebar(</span><br><span class="line">          d.title,</span><br><span class="line">          fileHelper.getFileName(rootpath, d.path),</span><br><span class="line">          d.collapsable,</span><br><span class="line">          d.sidebarDepth || <span class="number">1</span></span><br><span class="line">        )</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tempArr;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = helper;</span><br></pre></td></tr></table></figure>
+
+<p>再在 docs 文件夹下新增一个 fileData 文件夹以及在 fileData 内创建 sidebarData.js</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 构建这样的数据类型</span></span><br><span class="line"><span class="keyword">const</span> sidebarData = &#123;</span><br><span class="line">  enFileData: [</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"DataStructureTransformation"</span>,</span><br><span class="line">      path: <span class="string">"/en/javascript/DataStructureTransformation"</span>,</span><br><span class="line">      collapsable: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"eventHandler"</span>,</span><br><span class="line">      path: <span class="string">"/en/javascript/eventHandler"</span>,</span><br><span class="line">      collapsable: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"basic"</span>,</span><br><span class="line">      path: <span class="string">"/en/javascript/basic"</span>,</span><br><span class="line">      collapsable: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"dataProcessing"</span>,</span><br><span class="line">      path: <span class="string">"/en/javascript/dataProcessing"</span>,</span><br><span class="line">      collapsable: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  zhFileData: [</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"数据结构转换"</span>,</span><br><span class="line">      path: <span class="string">"/javascript/DataStructureTransformation"</span>,</span><br><span class="line">      collapsable: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"事件处理相关"</span>,</span><br><span class="line">      path: <span class="string">"/javascript/eventHandler"</span>,</span><br><span class="line">      collapsable: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"基础类"</span>,</span><br><span class="line">      path: <span class="string">"/javascript/basic"</span>,</span><br><span class="line">      collapsable: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"数据处理"</span>,</span><br><span class="line">      path: <span class="string">"/javascript/dataProcessing"</span>,</span><br><span class="line">      collapsable: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = sidebarData;</span><br></pre></td></tr></table></figure>
+
+<p>最后修改 config.js</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">const</span> rootpath = path.dirname(__dirname); <span class="comment">//执行一次dirname将目录定位到docs目录</span></span><br><span class="line"><span class="comment">// const util = require("util");</span></span><br><span class="line"><span class="keyword">const</span> sideBarData = <span class="built_in">require</span>(<span class="string">"./fileData/sideBarData"</span>);</span><br><span class="line"><span class="keyword">const</span> helper = <span class="built_in">require</span>(<span class="string">"./utils/helper"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> en = helper.genSidebar(</span><br><span class="line">  <span class="string">"Javascript"</span>,</span><br><span class="line">  helper.generateArr(sideBarData.enFileData, rootpath),</span><br><span class="line">  <span class="literal">true</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> zh = helper.genSidebar(</span><br><span class="line">  <span class="string">"Javascript"</span>,</span><br><span class="line">  helper.generateArr(sideBarData.zhFileData, rootpath),</span><br><span class="line">  <span class="literal">true</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// console.log(util.inspect(en, &#123; showHidden: false, depth: null, colors: true &#125;)); // alternative shortcutconsole.log(util.inspect(myObject, false, null, true /* enable colors */))</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  base: <span class="string">"/interviewExercise/"</span>,</span><br><span class="line">  dest: <span class="string">"docs/.vuepress/dist"</span>,</span><br><span class="line"></span><br><span class="line">  description: <span class="string">"面试题"</span>,</span><br><span class="line">  locales: &#123;</span><br><span class="line">    <span class="comment">// 键名是该语言所属的子路径</span></span><br><span class="line">    <span class="comment">// 作为特例，默认语言可以使用 '/' 作为其路径。</span></span><br><span class="line">    <span class="comment">// "/": &#123;</span></span><br><span class="line">    <span class="comment">//   lang: "en-US", // 将会被设置为 &lt;html&gt; 的 lang 属性</span></span><br><span class="line">    <span class="comment">//   title: "InterviewExercise",</span></span><br><span class="line">    <span class="comment">//   description: "Vue-powered Static Site Generator",</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line"></span><br><span class="line">    <span class="string">"/en/"</span>: &#123;</span><br><span class="line">      lang: <span class="string">"en-US"</span>, <span class="comment">// 将会被设置为 &lt;html&gt; 的 lang 属性</span></span><br><span class="line">      title: <span class="string">"InterviewExercise"</span>,</span><br><span class="line">      description: <span class="string">"Vue-powered Static Site Generator"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"/"</span>: &#123;</span><br><span class="line">      lang: <span class="string">"zh-CN"</span>,</span><br><span class="line">      title: <span class="string">"练习题"</span>,</span><br><span class="line">      description: <span class="string">"Vue 驱动的静态网站生成器"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  themeConfig: &#123;</span><br><span class="line">    editLinks: <span class="literal">false</span>,</span><br><span class="line">    docsDir: <span class="string">"docs"</span>,</span><br><span class="line">    nav: [],</span><br><span class="line">    locales: &#123;</span><br><span class="line">      <span class="string">"/en/"</span>: &#123;</span><br><span class="line">        selectText: <span class="string">"选择语言"</span>,</span><br><span class="line">        label: <span class="string">"English"</span>,</span><br><span class="line">        ariaLabel: <span class="string">"Languages"</span>,</span><br><span class="line">        editLinkText: <span class="string">"Edit this page on GitHub"</span>,</span><br><span class="line">        <span class="comment">// nav: [&#123; text: "Nested", link: "/nested/", ariaLabel: "Nested" &#125;],</span></span><br><span class="line">        sidebar: &#123;</span><br><span class="line">          <span class="string">"/en/"</span>: en,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"/"</span>: &#123;</span><br><span class="line">        <span class="comment">// 多语言下拉菜单的标题</span></span><br><span class="line">        selectText: <span class="string">"Languages"</span>,</span><br><span class="line">        <span class="comment">// 该语言在下拉菜单中的标签</span></span><br><span class="line">        label: <span class="string">"简体中文"</span>,</span><br><span class="line">        <span class="comment">// 编辑链接文字</span></span><br><span class="line">        editLinkText: <span class="string">"在 GitHub 上编辑此页"</span>,</span><br><span class="line">        <span class="comment">// Service Worker 的配置</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当前 locale 的 algolia docsearch 选项</span></span><br><span class="line">        <span class="comment">// nav: [&#123; text: "嵌套", link: "/zh/nested/" &#125;],</span></span><br><span class="line">        sidebar: &#123;</span><br><span class="line">          <span class="string">"/"</span>: zh,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这样通过</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> en = helper.genSidebar(</span><br><span class="line">  <span class="string">"Javascript"</span>,</span><br><span class="line">  helper.generateArr(sideBarData.enFileData, rootpath),</span><br><span class="line">  <span class="literal">true</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> zh = helper.genSidebar(</span><br><span class="line">  <span class="string">"Javascript"</span>,</span><br><span class="line">  helper.generateArr(sideBarData.zhFileData, rootpath),</span><br><span class="line">  <span class="literal">true</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>就能不用再手动目录了，新增一个文件夹就可以去 sidebarData.js 内新增侧边栏标题和文件路径就行了</p>
+<p>以上就是暂时对 vuepress 的浅浅尝试</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Vue/" rel="tag"># Vue</a>
+              <a href="/tags/Vuepress/" rel="tag"># Vuepress</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E8%B7%A8%E8%B6%8A%E9%97%AE%E9%A2%98/" rel="prev" title="前端代理解决跨越问题">
+      <i class="fa fa-chevron-left"></i> 前端代理解决跨越问题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Hackintosh-K670-G4E6-%E7%A5%9E%E8%88%9F%E6%88%98%E7%A5%9E%E7%B3%BB%E5%88%97-hasse-god-of-war-serials/" rel="next" title="Hackintosh-K670-G4E6(神舟战神系列 hasse god of war serials)">
+      Hackintosh-K670-G4E6(神舟战神系列 hasse god of war serials) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#package-json-文件"><span class="nav-number">1.</span> <span class="nav-text">package.json 文件</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Theme NexT"
+      src="/images/apple-touch-icon-next.png">
+  <p class="site-author-name" itemprop="name">Theme NexT</p>
+  <div class="site-description" itemprop="description">Stay Simple. Stay NexT.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQ=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;theme-next"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:support@theme-next.org" title="E-Mail → mailto:support@theme-next.org"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXR0ZXIuaW0vdGhlbWUtbmV4dA==" title="Gitter → https:&#x2F;&#x2F;gitter.im&#x2F;theme-next"><i class="fab fa-github-alt fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9yaW90LmltL2FwcC8jL3Jvb20vI05leFQ6bWF0cml4Lm9yZw==" title="Riot → https:&#x2F;&#x2F;riot.im&#x2F;app&#x2F;#&#x2F;room&#x2F;#NexT:matrix.org"><i class="fa fa-comment-dots fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly90Lm1lL3RoZW1lX25leHQ=" title="Telegram → https:&#x2F;&#x2F;t.me&#x2F;theme_next"><i class="fab fa-telegram fa-fw"></i></span>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+<div class="cc-license motion-element" itemprop="sponsor">
+  <span class="exturl cc-opacity" title="Deploy with Netlify → https://www.netlify.com" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20="><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></span>
+</div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2014 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NexT</span>
+</div><div class="footer-custom">
+Theme source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvaGV4by10aGVtZS1uZXh0">here</span><br>
+Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQvdGhlbWUtbmV4dC5vcmc=">here</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://theme-next.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://theme-next.org/Vuepress-%E5%B0%9D%E9%B2%9C%E4%BB%A5%E5%8F%8A%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%B0%8F%E6%94%B9%E5%8A%A8/";
+    this.page.identifier = "Vuepress-尝鲜以及侧边栏小改动/";
+    this.page.title = "Vuepress 尝鲜以及侧边栏小改动";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://theme-next.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>
