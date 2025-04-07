@@ -10,7 +10,7 @@ author: PenZ
 language: zh-CN
 
 index_generator:
-  per_page: 6
+  per_page: 10
   order_by: -date
 
 archive_generator:
@@ -248,9 +248,9 @@ theme_config:
     item_text_post: true
     item_text_total: true
 
-  post_edit:
-    enable: true
-    url: https://github.com/theme-next/theme-next.org/edit/source/source/
+  # post_edit:
+  #   enable: true
+  #   url: https://github.com/theme-next/theme-next.org/edit/source/source/
 
 
   # ============================================================= #
@@ -273,8 +273,8 @@ theme_config:
 
   github_banner:
     enable: true
-    permalink: https://github.com/theme-next/hexo-theme-next
-    title: Fork NexT on GitHub
+    permalink: https://github.com/ShowPenZ
+    title: ShowPenZ
 
 
   # ============================================================= #
@@ -285,7 +285,7 @@ theme_config:
 
   exturl: true
 
-  yandex_site_verification: 3ac9ae36ddebb425
+  yandex_site_verification: 
 
 
   # ============================================================= #
@@ -313,7 +313,7 @@ theme_config:
 
   disqus:
     enable: true
-    shortname: theme-next
+    shortname: pen
     count: true
 
 
