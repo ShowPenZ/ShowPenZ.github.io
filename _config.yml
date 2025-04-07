@@ -219,6 +219,7 @@ theme_config:
   avatar:
     url: /images/avatar.jpg
     rounded: true
+    rotated: true
 
   social:
     GitHub: https://github.com/ShowPenZ || fab fa-github
