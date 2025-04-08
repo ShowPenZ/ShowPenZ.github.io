@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"showpenz.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta name="description" content="关于如何创建机器人以及机器人部署至线上服务器请看这篇博文从零开始写一个 Telegram Bot 以下的是我根据博文部署以及写机器人产生的一些问题 线上部署时，用的是 centos 6.8 的系统所以安装 nginx 时产生了一些和教程博客不一样的地方如图: 这是教程截图   因为 centos 系统版本不一样 所以 yum 源设置也不一样 我的解决办法 vim &#x2F;etc&#x2F;yu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="telegram 机器人">
-<meta property="og:url" content="http://yoursite.com/telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA/index.html">
+<meta property="og:url" content="http://showpenz.github.io/telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA/index.html">
 <meta property="og:site_name" content="PenZ&#39;s Space">
 <meta property="og:description" content="关于如何创建机器人以及机器人部署至线上服务器请看这篇博文从零开始写一个 Telegram Bot 以下的是我根据博文部署以及写机器人产生的一些问题 线上部署时，用的是 centos 6.8 的系统所以安装 nginx 时产生了一些和教程博客不一样的地方如图: 这是教程截图   因为 centos 系统版本不一样 所以 yum 源设置也不一样 我的解决办法 vim &#x2F;etc&#x2F;yu">
 <meta property="og:locale" content="zh_CN">
@@ -36,7 +36,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2019/12/28/z7ogQahDpLJ3BK2.png">
 
-<link rel="canonical" href="http://yoursite.com/telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA/">
+<link rel="canonical" href="http://showpenz.github.io/telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA/">
 
 
 <script id="page-configurations">
@@ -200,7 +200,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA/">
+    <link itemprop="mainEntityOfPage" href="http://showpenz.github.io/telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -590,7 +590,7 @@ window.addEventListener('pjax:success', () => {
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yoursite.com/telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA/";
+    this.page.url = "http://showpenz.github.io/telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA/";
     this.page.identifier = "telegram-机器人/";
     this.page.title = "telegram 机器人";
     };
