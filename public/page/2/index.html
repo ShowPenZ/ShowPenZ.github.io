@@ -17,19 +17,19 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+    var CONFIG = {"hostname":"showpenz.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="PenZ&#39;s Space">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:url" content="https://showpenz.github.io/page/2/index.html">
 <meta property="og:site_name" content="PenZ&#39;s Space">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="PenZ">
 <meta property="article:tag" content="blog">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/page/2/">
+<link rel="canonical" href="https://showpenz.github.io/page/2/">
 
 
 <script id="page-configurations">
@@ -44,6 +44,15 @@
 
   <title>PenZ's Space - 万物归一</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BCR6GPF6YM"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BCR6GPF6YM');
+      }
+    </script>
 
 
 
@@ -119,7 +128,12 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">36</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">37</span></a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -178,7 +192,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0Promise-all/">
+    <link itemprop="mainEntityOfPage" href="https://showpenz.github.io/%E8%AF%A1%E5%BC%82%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%A0%B7%E5%BC%8F%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PenZ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PenZ's Space">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%E8%AF%A1%E5%BC%82%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%A0%B7%E5%BC%8F%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">诡异的滚动样式问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-26 17:08:14" itemprop="dateCreated datePublished" datetime="2020-07-26T17:08:14+08:00">2020-07-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/%E8%AF%A1%E5%BC%82%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%A0%B7%E5%BC%8F%E9%97%AE%E9%A2%98/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="诡异的滚动样式问题/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>起因：同样的css区域滚动代码，js加载数百条数据在一个区块滚动。安卓下没问题，ios下呈现这样的效果<img data-src="https://i.loli.net/2020/07/26/jgkLNhwH5Z3E7Oa.png" alt="image.png">，也就是数据粘在了一起。</p>
+<p>解决思路: 一开始很懵逼，在mac的Chrome 模拟的iPhone下页面没有任何的问题，但是真机上就是出现了。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/%E8%AF%A1%E5%BC%82%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%A0%B7%E5%BC%8F%E9%97%AE%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://showpenz.github.io/%E6%89%8B%E5%86%99%E5%AE%9E%E7%8E%B0Promise-all/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -258,7 +361,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Hackintosh-K670-G4E6-%E7%A5%9E%E8%88%9F%E6%88%98%E7%A5%9E%E7%B3%BB%E5%88%97-hasse-god-of-war-serials/">
+    <link itemprop="mainEntityOfPage" href="https://showpenz.github.io/Hackintosh-K670-G4E6-%E7%A5%9E%E8%88%9F%E6%88%98%E7%A5%9E%E7%B3%BB%E5%88%97-hasse-god-of-war-serials/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -379,7 +482,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Vuepress-%E5%B0%9D%E9%B2%9C%E4%BB%A5%E5%8F%8A%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%B0%8F%E6%94%B9%E5%8A%A8/">
+    <link itemprop="mainEntityOfPage" href="https://showpenz.github.io/Vuepress-%E5%B0%9D%E9%B2%9C%E4%BB%A5%E5%8F%8A%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%B0%8F%E6%94%B9%E5%8A%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -467,7 +570,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E8%B7%A8%E8%B6%8A%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://showpenz.github.io/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E8%B7%A8%E8%B6%8A%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -558,7 +661,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/react-componentDidMount-%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://showpenz.github.io/react-componentDidMount-%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -641,7 +744,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/js-%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97-%E4%BD%BF%E7%94%A8decimal-js/">
+    <link itemprop="mainEntityOfPage" href="https://showpenz.github.io/js-%E6%B5%AE%E7%82%B9%E6%95%B0%E8%BF%90%E7%AE%97-%E4%BD%BF%E7%94%A8decimal-js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -731,7 +834,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%BB%B7%E5%80%BC/">
+    <link itemprop="mainEntityOfPage" href="https://showpenz.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%BB%B7%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -840,7 +943,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E6%AF%94%E7%89%B9%E5%B8%81%E7%97%9B%E7%82%B9/">
+    <link itemprop="mainEntityOfPage" href="https://showpenz.github.io/%E6%AF%94%E7%89%B9%E5%B8%81%E7%97%9B%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -937,7 +1040,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88/">
+    <link itemprop="mainEntityOfPage" href="https://showpenz.github.io/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -1030,101 +1133,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/react-npmpkg-starter/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="PenZ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PenZ's Space">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/react-npmpkg-starter/" class="post-title-link" itemprop="url">npmpkg starter</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-14 15:31:59" itemprop="dateCreated datePublished" datetime="2020-01-14T15:31:59+08:00">2020-01-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/react-npmpkg-starter/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="react-npmpkg-starter/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="npmpkg-starter-vue"><a href="#npmpkg-starter-vue" class="headerlink" title="npmpkg-starter-vue"></a>npmpkg-starter-vue</h1><p>A Vue NPM package starter</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1Nob3dQZW5aL25wbXBrZy1zdGFydGVyLXZ1ZQ==">项目代码地址<i class="fa fa-external-link-alt"></i></span></p>
-<p>为了简化老哥们的生产 npm 包的复杂程度<br>提供了一个小框架(Vue 版) 打包工具使用<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2Vnb2lzdC9iaWxp">bili<i class="fa fa-external-link-alt"></i></span><br>还有相应的代码规范规则以及代码提交规范</p>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm i</span><br><span class="line">$ yarn</span><br></pre></td></tr></table></figure>
-
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ol>
-<li><p>修改<code>package.json</code><br><img data-src="https://i.loli.net/2020/01/14/9vf1JxTrGCZmtcW.png" alt="image.png"><br>name，author，main，description，keywords 改为你需要写入的信息<br>main 为打包出来的文件路口</p>
-<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/react-npmpkg-starter/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1196,7 +1204,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

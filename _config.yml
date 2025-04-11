@@ -28,7 +28,7 @@ tag_generator:
 
 timezone: Asia/Shanghai
 
-url: http://yoursite.com
+url: https://showpenz.github.io
 root: /
 permalink: :title/
 permalink_defaults:
