@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"showpenz.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="引子：因工作的原因接触Ton链的合约开发，遂埋头进入Ton链的学习，一个猛扎下去才发现水太深了 学习新技术肯定需要官方的文档：  https:&#x2F;&#x2F;docs.ton.org&#x2F;mandarin&#x2F;v3&#x2F;guidelines&#x2F;get-started-with-ton Ton的相关文档 https:&#x2F;&#x2F;stepik.org&#x2F;course&#x2F;176754&#x2F;promo Ton的合约入门视频课程学习上述两个是我主要">
+  <meta name="description" content="引子：因工作的原因接触Ton链的合约开发，遂埋头进入Ton链的学习，一个猛扎下去才发现水太深了 学习新技术肯定需要官方的文档：  Ton的相关文档 Ton的合约入门视频课程学习上述两个是我主要学习使用的文档  我的一个简单TON银行项目项目地址,后续的代码都在这个项目中。 接下来我阐述的是，我视角中如何理解和学习的过程：首先，我具有evm链的合约开发经验和基础知识，那在TON链上很多东西完全不同可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TON 合约开发个人经历(1)">
 <meta property="og:url" content="https://showpenz.github.io/TON-%E5%90%88%E7%BA%A6%E5%BC%80%E5%8F%91%E4%B8%AA%E4%BA%BA%E7%BB%8F%E5%8E%86-1/index.html">
 <meta property="og:site_name" content="PenZ&#39;s Space">
-<meta property="og:description" content="引子：因工作的原因接触Ton链的合约开发，遂埋头进入Ton链的学习，一个猛扎下去才发现水太深了 学习新技术肯定需要官方的文档：  https:&#x2F;&#x2F;docs.ton.org&#x2F;mandarin&#x2F;v3&#x2F;guidelines&#x2F;get-started-with-ton Ton的相关文档 https:&#x2F;&#x2F;stepik.org&#x2F;course&#x2F;176754&#x2F;promo Ton的合约入门视频课程学习上述两个是我主要">
+<meta property="og:description" content="引子：因工作的原因接触Ton链的合约开发，遂埋头进入Ton链的学习，一个猛扎下去才发现水太深了 学习新技术肯定需要官方的文档：  Ton的相关文档 Ton的合约入门视频课程学习上述两个是我主要学习使用的文档  我的一个简单TON银行项目项目地址,后续的代码都在这个项目中。 接下来我阐述的是，我视角中如何理解和学习的过程：首先，我具有evm链的合约开发经验和基础知识，那在TON链上很多东西完全不同可">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-04-06T09:41:58.000Z">
-<meta property="article:modified_time" content="2025-04-11T09:08:55.213Z">
+<meta property="article:modified_time" content="2025-04-11T09:56:54.073Z">
 <meta property="article:author" content="PenZ">
 <meta property="article:tag" content="Ton Func">
 <meta name="twitter:card" content="summary">
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">37</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">38</span></a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
@@ -260,9 +260,10 @@
         <p>引子：因工作的原因接触Ton链的合约开发，遂埋头进入Ton链的学习，一个猛扎下去才发现水太深了</p>
 <p>学习新技术肯定需要官方的文档：</p>
 <ol>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRvbi5vcmcvbWFuZGFyaW4vdjMvZ3VpZGVsaW5lcy9nZXQtc3RhcnRlZC13aXRoLXRvbg==">https://docs.ton.org/mandarin/v3/guidelines/get-started-with-ton<i class="fa fa-external-link-alt"></i></span> Ton的相关文档</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zdGVwaWsub3JnL2NvdXJzZS8xNzY3NTQvcHJvbW8=">https://stepik.org/course/176754/promo<i class="fa fa-external-link-alt"></i></span> Ton的合约入门视频课程学习<br>上述两个是我主要学习使用的文档</li>
+<li><a href="!https://docs.ton.org/mandarin/v3/guidelines/get-started-with-ton">Ton的相关文档</a></li>
+<li><a href="!https://stepik.org/course/176754/promo">Ton的合约入门视频课程学习</a><br>上述两个是我主要学习使用的文档</li>
 </ol>
+<p>我的一个简单TON银行项目<a href="!https://github.com/ShowPenZ/Ton-project">项目地址</a>,后续的代码都在这个项目中。</p>
 <p>接下来我阐述的是，我视角中如何理解和学习的过程：<br>首先，我具有evm链的合约开发经验和基础知识，那在TON链上很多东西完全不同可以说是一切都是新的，所以即使你没有接触过evm也没有关系。</p>
 <a id="more"></a>
 
@@ -456,7 +457,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
