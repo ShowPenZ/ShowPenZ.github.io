@@ -25,7 +25,7 @@
   },
   "homepage": "https://theme-next.org",
   "dependencies": {
-    "hexo": "4.2.0",
+    "hexo": "5.4.1",
     "hexo-cli": "3.1.0",
     "hexo-deployer-git": "2.1.0",
     "hexo-generator-archive": "1.0.0",
