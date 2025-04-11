@@ -1,8 +1,8 @@
 ---
-layout: post
 title: TON 合约开发个人经历(3)
 date: 2025-04-10 17:16:36
-tags:
+tags: Ton Func
+categories: Ton 合约开发
 ---
 # TON 智能合约开发经验分享
 

@@ -7,9 +7,11 @@ categories: Ton 合约开发
 引子：因工作的原因接触Ton链的合约开发，遂埋头进入Ton链的学习，一个猛扎下去才发现水太深了
 
 学习新技术肯定需要官方的文档：
-1. https://docs.ton.org/mandarin/v3/guidelines/get-started-with-ton Ton的相关文档
-2. https://stepik.org/course/176754/promo Ton的合约入门视频课程学习
+1. [Ton的相关文档](!https://docs.ton.org/mandarin/v3/guidelines/get-started-with-ton)
+2. [Ton的合约入门视频课程学习](!https://stepik.org/course/176754/promo)
 上述两个是我主要学习使用的文档
+
+我的一个简单TON银行项目[项目地址](!https://github.com/ShowPenZ/Ton-project),后续的代码都在这个项目中。
 
 接下来我阐述的是，我视角中如何理解和学习的过程：
 首先，我具有evm链的合约开发经验和基础知识，那在TON链上很多东西完全不同可以说是一切都是新的，所以即使你没有接触过evm也没有关系。
