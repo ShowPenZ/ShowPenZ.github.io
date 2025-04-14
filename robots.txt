@@ -1,3 +1,7 @@
 User-agent: *
-allow: /
-sitemap: https://showpenz.github.io/sitemap.xml
+Allow: /
+Allow: /archives/
+Allow: /tags/
+Allow: /categories/
+Allow: /about/
+Sitemap: https://showpenz.github.io/sitemap.xml
